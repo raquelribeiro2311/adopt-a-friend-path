@@ -25,7 +25,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <Heart className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" fill="currentColor" />
-            <span className="text-xl font-bold text-foreground">Amigo de Pata</span>
+            <span className="text-xl font-bold text-foreground">Lar dos Caramellos</span>
           </Link>
 
           {/* Desktop Navigation */}
