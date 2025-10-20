@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, MapPin } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface DogCardProps {
   id: string;
@@ -22,6 +23,7 @@ const statusConfig = {
 
 const DogCard = ({ name, image, age, size, location, status }: DogCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
@@ -65,7 +67,12 @@ const DogCard = ({ name, image, age, size, location, status }: DogCardProps) => 
         <Button className="flex-1" disabled={status !== "available"}>
           Ver Perfil
         </Button>
-        <Button variant="outline" className="flex-1" disabled={status !== "available"}>
+        <Button 
+          variant="outline" 
+          className="flex-1" 
+          disabled={status !== "available"}
+          onClick={() => navigate("/apadrinhar")}
+        >
           Apadrinhar
         </Button>
       </CardFooter>

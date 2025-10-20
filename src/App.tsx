@@ -8,6 +8,7 @@ import Dogs from "./pages/Dogs";
 import Login from "./pages/Login";
 import Tips from "./pages/Tips";
 import Stories from "./pages/Stories";
+import Sponsorship from "./pages/Sponsorship";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/caes" element={<Dogs />} />
+          <Route path="/apadrinhar" element={<Sponsorship />} />
           <Route path="/dicas" element={<Tips />} />
           <Route path="/historias" element={<Stories />} />
           <Route path="/login" element={<Login />} />
