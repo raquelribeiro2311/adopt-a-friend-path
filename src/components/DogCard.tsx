@@ -1,7 +1,4 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Heart, MapPin } from "lucide-react";
+import { Card, Button, Badge } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,9 +13,9 @@ interface DogCardProps {
 }
 
 const statusConfig = {
-  available: { label: "Disponível", className: "bg-accent text-accent-foreground" },
-  process: { label: "Em Processo", className: "bg-secondary" },
-  adopted: { label: "Adotado", className: "bg-muted" },
+  available: { label: "Disponível", bg: "success" },
+  process: { label: "Em Processo", bg: "warning" },
+  adopted: { label: "Adotado", bg: "secondary" },
 };
 
 const DogCard = ({ name, image, age, size, location, status }: DogCardProps) => {
@@ -26,56 +23,58 @@ const DogCard = ({ name, image, age, size, location, status }: DogCardProps) => 
   const navigate = useNavigate();
 
   return (
-    <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
-      <div className="relative aspect-square overflow-hidden">
-        <img
+    <Card className="h-100 card-hover">
+      <div className="position-relative">
+        <Card.Img
+          variant="top"
           src={image}
           alt={name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="dog-card-img"
         />
         <button
           onClick={() => setIsFavorite(!isFavorite)}
-          className="absolute top-3 right-3 p-2 rounded-full bg-card/90 backdrop-blur-sm hover:bg-card transition-colors"
+          className={`favorite-btn ${isFavorite ? "active" : ""}`}
           aria-label="Favoritar"
         >
-          <Heart
-            className={`w-5 h-5 transition-colors ${
-              isFavorite ? "fill-primary text-primary" : "text-muted-foreground"
-            }`}
-          />
+          <i className={`bi ${isFavorite ? "bi-heart-fill" : "bi-heart"} fs-5`}></i>
         </button>
-        <div className="absolute top-3 left-3">
-          <Badge className={statusConfig[status].className}>
-            {statusConfig[status].label}
-          </Badge>
-        </div>
+        <Badge
+          bg={statusConfig[status].bg}
+          className="status-badge"
+        >
+          {statusConfig[status].label}
+        </Badge>
       </div>
       
-      <CardContent className="p-4">
-        <h3 className="text-xl font-bold text-foreground mb-2">{name}</h3>
-        <div className="flex gap-2 mb-3">
-          <Badge variant="outline" className="text-xs">{age}</Badge>
-          <Badge variant="outline" className="text-xs">{size}</Badge>
+      <Card.Body>
+        <Card.Title className="fw-bold">{name}</Card.Title>
+        <div className="d-flex gap-2 mb-3">
+          <Badge bg="light" text="dark">{age}</Badge>
+          <Badge bg="light" text="dark">{size}</Badge>
         </div>
-        <div className="flex items-center gap-1 text-sm text-muted-foreground">
-          <MapPin className="w-4 h-4" />
-          <span>{location}</span>
+        <div className="d-flex align-items-center text-muted">
+          <i className="bi bi-geo-alt me-1"></i>
+          <small>{location}</small>
         </div>
-      </CardContent>
+      </Card.Body>
       
-      <CardFooter className="p-4 pt-0 flex gap-2">
-        <Button className="flex-1" disabled={status !== "available"}>
-          Ver Perfil
-        </Button>
-        <Button 
-          variant="outline" 
-          className="flex-1" 
-          disabled={status !== "available"}
-          onClick={() => navigate("/apadrinhar")}
-        >
-          Apadrinhar
-        </Button>
-      </CardFooter>
+      <Card.Footer className="bg-white border-top-0">
+        <div className="d-grid gap-2">
+          <Button
+            variant="primary"
+            disabled={status !== "available"}
+          >
+            Ver Perfil
+          </Button>
+          <Button
+            variant="outline-primary"
+            disabled={status !== "available"}
+            onClick={() => navigate("/apadrinhar")}
+          >
+            Apadrinhar
+          </Button>
+        </div>
+      </Card.Footer>
     </Card>
   );
 };

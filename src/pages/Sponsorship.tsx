@@ -1,11 +1,6 @@
+import { Container, Row, Col, Card, Button, Form, Badge } from "react-bootstrap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Heart, DollarSign, Calendar, Gift } from "lucide-react";
 import dog1 from "@/assets/dog-1.jpg";
 import dog2 from "@/assets/dog-2.jpg";
 import dog3 from "@/assets/dog-3.jpg";
@@ -78,202 +73,179 @@ const Sponsorship = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="d-flex flex-column min-vh-100">
       <Navbar />
       
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto">
-              <Heart className="w-16 h-16 text-primary mx-auto mb-6" fill="currentColor" />
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Seja um Padrinho
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8">
-                Não pode adotar mas quer ajudar? Apadrinhe um pet e faça a diferença na vida dele!
-                Seu apoio garante alimentação, cuidados veterinários e muito carinho.
-              </p>
-            </div>
-          </div>
-        </section>
+      {/* Hero Section */}
+      <section className="bg-primary bg-opacity-10 py-5">
+        <Container className="text-center">
+          <i className="bi bi-heart-fill text-primary display-1"></i>
+          <h1 className="display-4 fw-bold mt-3 mb-3">Seja um Padrinho</h1>
+          <p className="lead text-muted col-lg-8 mx-auto">
+            Não pode adotar mas quer ajudar? Apadrinhe um pet e faça a diferença na vida dele!
+            Seu apoio garante alimentação, cuidados veterinários e muito carinho.
+          </p>
+        </Container>
+      </section>
 
-        {/* Como Funciona */}
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-              Como Funciona o Apadrinhamento
-            </h2>
-            <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Heart className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-bold text-foreground mb-2">1. Escolha um Pet</h3>
-                <p className="text-sm text-muted-foreground">
-                  Selecione o pet que você quer apadrinhar
-                </p>
+      {/* Como Funciona */}
+      <section className="py-5 bg-light">
+        <Container>
+          <h2 className="text-center fw-bold mb-5">Como Funciona o Apadrinhamento</h2>
+          <Row className="g-4">
+            <Col md={6} lg={3} className="text-center">
+              <div className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '80px', height: '80px' }}>
+                <i className="bi bi-heart text-primary fs-2"></i>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-bold text-foreground mb-2">2. Escolha o Plano</h3>
-                <p className="text-sm text-muted-foreground">
-                  Defina o valor da sua contribuição mensal
-                </p>
+              <h5 className="fw-bold">1. Escolha um Pet</h5>
+              <p className="text-muted">Selecione o pet que você quer apadrinhar</p>
+            </Col>
+            <Col md={6} lg={3} className="text-center">
+              <div className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '80px', height: '80px' }}>
+                <i className="bi bi-currency-dollar text-primary fs-2"></i>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-bold text-foreground mb-2">3. Acompanhe</h3>
-                <p className="text-sm text-muted-foreground">
-                  Receba fotos e atualizações mensais
-                </p>
+              <h5 className="fw-bold">2. Escolha o Plano</h5>
+              <p className="text-muted">Defina o valor da sua contribuição mensal</p>
+            </Col>
+            <Col md={6} lg={3} className="text-center">
+              <div className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '80px', height: '80px' }}>
+                <i className="bi bi-calendar3 text-primary fs-2"></i>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Gift className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-bold text-foreground mb-2">4. Visite</h3>
-                <p className="text-sm text-muted-foreground">
-                  Agende visitas e acompanhe o progresso
-                </p>
+              <h5 className="fw-bold">3. Acompanhe</h5>
+              <p className="text-muted">Receba fotos e atualizações mensais</p>
+            </Col>
+            <Col md={6} lg={3} className="text-center">
+              <div className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '80px', height: '80px' }}>
+                <i className="bi bi-gift text-primary fs-2"></i>
               </div>
-            </div>
-          </div>
-        </section>
+              <h5 className="fw-bold">4. Visite</h5>
+              <p className="text-muted">Agende visitas e acompanhe o progresso</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-        {/* Planos de Apadrinhamento */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-foreground mb-4">
-              Planos de Apadrinhamento
-            </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Escolha o plano que melhor se adequa à sua realidade. Qualquer contribuição faz diferença!
-            </p>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {sponsorshipPlans.map((plan) => (
-                <Card 
-                  key={plan.id} 
-                  className={`relative ${plan.featured ? 'border-primary shadow-lg scale-105' : ''}`}
-                >
+      {/* Planos */}
+      <section className="py-5">
+        <Container>
+          <h2 className="text-center fw-bold mb-3">Planos de Apadrinhamento</h2>
+          <p className="text-center text-muted mb-5">
+            Escolha o plano que melhor se adequa à sua realidade. Qualquer contribuição faz diferença!
+          </p>
+          <Row className="g-4">
+            {sponsorshipPlans.map((plan) => (
+              <Col key={plan.id} md={6} lg={4}>
+                <Card className={`h-100 position-relative ${plan.featured ? 'border-primary shadow-lg' : ''}`}>
                   {plan.featured && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                        Mais Popular
-                      </span>
-                    </div>
+                    <Badge bg="primary" className="position-absolute top-0 start-50 translate-middle">
+                      Mais Popular
+                    </Badge>
                   )}
-                  <CardHeader>
-                    <CardTitle className="text-center">
-                      <div className="mb-2">{plan.name}</div>
-                      <div className="text-3xl font-bold text-primary">
-                        {plan.price}
-                        <span className="text-sm text-muted-foreground font-normal">{plan.period}</span>
-                      </div>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 mb-6">
+                  <Card.Body className="text-center">
+                    <Card.Title className="fw-bold mb-4">{plan.name}</Card.Title>
+                    <div className="display-4 fw-bold text-primary mb-2">
+                      {plan.price}
+                      <span className="fs-6 text-muted">{plan.period}</span>
+                    </div>
+                    <hr className="my-4" />
+                    <ul className="list-unstyled text-start">
                       {plan.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <Heart className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" fill="currentColor" />
-                          <span className="text-sm text-foreground">{benefit}</span>
+                        <li key={index} className="mb-3">
+                          <i className="bi bi-check-circle-fill text-primary me-2"></i>
+                          <small>{benefit}</small>
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full" variant={plan.featured ? "default" : "outline"}>
+                    <Button variant={plan.featured ? "primary" : "outline-primary"} className="w-100 mt-3">
                       Escolher Plano
                     </Button>
-                  </CardContent>
+                  </Card.Body>
                 </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
 
-        {/* Pets Disponíveis para Apadrinhamento */}
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-foreground mb-4">
-              Pets Aguardando Padrinhos
-            </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Conheça alguns pets que precisam do seu apoio
-            </p>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {sponsoredDogs.map((dog) => (
-                <Card key={dog.id} className="overflow-hidden">
-                  <div className="aspect-square overflow-hidden">
-                    <img 
-                      src={dog.image} 
-                      alt={dog.name}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-2">{dog.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{dog.description}</p>
-                    <div className="flex items-center gap-2 mb-4">
-                      <Heart className="w-4 h-4 text-primary" fill="currentColor" />
-                      <span className="text-sm text-muted-foreground">
+      {/* Pets Disponíveis */}
+      <section className="py-5 bg-light">
+        <Container>
+          <h2 className="text-center fw-bold mb-3">Pets Aguardando Padrinhos</h2>
+          <p className="text-center text-muted mb-5">
+            Conheça alguns pets que precisam do seu apoio
+          </p>
+          <Row className="g-4">
+            {sponsoredDogs.map((dog) => (
+              <Col key={dog.id} md={6} lg={4}>
+                <Card className="h-100">
+                  <Card.Img
+                    variant="top"
+                    src={dog.image}
+                    alt={dog.name}
+                    style={{ height: '250px', objectFit: 'cover' }}
+                  />
+                  <Card.Body>
+                    <Card.Title className="fw-bold">{dog.name}</Card.Title>
+                    <Card.Text className="text-muted">{dog.description}</Card.Text>
+                    <div className="mb-3">
+                      <i className="bi bi-heart-fill text-primary me-2"></i>
+                      <small className="text-muted">
                         {dog.sponsors} {dog.sponsors === 1 ? 'padrinho' : 'padrinhos'}
-                      </span>
+                      </small>
                     </div>
-                    <Button className="w-full">Apadrinhar {dog.name}</Button>
-                  </CardContent>
+                    <Button variant="primary" className="w-100">
+                      Apadrinhar {dog.name}
+                    </Button>
+                  </Card.Body>
                 </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
 
-        {/* Formulário de Contato */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-center text-foreground mb-4">
-                Fale Conosco
-              </h2>
-              <p className="text-center text-muted-foreground mb-8">
-                Tem dúvidas sobre o apadrinhamento? Entre em contato!
-              </p>
+      {/* Formulário */}
+      <section className="py-5">
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={8}>
               <Card>
-                <CardContent className="p-6">
-                  <form className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">Nome Completo</Label>
-                      <Input id="name" placeholder="Seu nome" />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">E-mail</Label>
-                      <Input id="email" type="email" placeholder="seu@email.com" />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Telefone</Label>
-                      <Input id="phone" type="tel" placeholder="(00) 00000-0000" />
-                    </div>
-                    <div>
-                      <Label htmlFor="message">Mensagem</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Conte-nos como você quer ajudar..."
+                <Card.Body className="p-4">
+                  <h3 className="text-center fw-bold mb-3">Fale Conosco</h3>
+                  <p className="text-center text-muted mb-4">
+                    Tem dúvidas sobre o apadrinhamento? Entre em contato!
+                  </p>
+                  <Form>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Nome Completo</Form.Label>
+                      <Form.Control type="text" placeholder="Seu nome" />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label>E-mail</Form.Label>
+                      <Form.Control type="email" placeholder="seu@email.com" />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Telefone</Form.Label>
+                      <Form.Control type="tel" placeholder="(00) 00000-0000" />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Mensagem</Form.Label>
+                      <Form.Control
+                        as="textarea"
                         rows={5}
+                        placeholder="Conte-nos como você quer ajudar..."
                       />
-                    </div>
-                    <Button type="submit" className="w-full">
+                    </Form.Group>
+                    <Button type="submit" variant="primary" className="w-100">
                       Enviar Mensagem
                     </Button>
-                  </form>
-                </CardContent>
+                  </Form>
+                </Card.Body>
               </Card>
-            </div>
-          </div>
-        </section>
-      </main>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
       <Footer />
     </div>
