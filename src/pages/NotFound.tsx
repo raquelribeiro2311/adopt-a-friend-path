@@ -1,6 +1,5 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Container, Button } from "react-bootstrap";
 
 const NotFound = () => {
   const location = useLocation();
@@ -10,23 +9,14 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
-      <Container className="text-center">
-        <div className="mb-4">
-          <i className="bi bi-emoji-frown text-primary" style={{ fontSize: '120px' }}></i>
-        </div>
-        <h1 className="display-1 fw-bold mb-3">404</h1>
-        <h2 className="h3 mb-3">Página Não Encontrada</h2>
-        <p className="text-muted mb-4">
-          Desculpe, a página que você está procurando não existe ou foi movida.
-        </p>
-        <Link to="/">
-          <Button variant="primary" size="lg">
-            <i className="bi bi-house me-2"></i>
-            Voltar para Home
-          </Button>
-        </Link>
-      </Container>
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="text-center">
+        <h1 className="mb-4 text-4xl font-bold">404</h1>
+        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
+        <a href="/" className="text-blue-500 underline hover:text-blue-700">
+          Return to Home
+        </a>
+      </div>
     </div>
   );
 };

@@ -1,76 +1,89 @@
+import { Heart, Facebook, Instagram, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
 
 const Footer = () => {
   return (
-    <footer className="footer py-5">
-      <Container>
-        <Row>
-          <Col md={4} className="mb-4">
-            <div className="d-flex align-items-center mb-3">
-              <i className="bi bi-heart-fill text-primary me-2 fs-4"></i>
-              <h5 className="mb-0 fw-bold">Lar dos Caramellos</h5>
+    <footer className="bg-card border-t border-border mt-20">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Logo e Descrição */}
+          <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <Heart className="w-8 h-8 text-primary" fill="currentColor" />
+              <span className="text-xl font-bold text-foreground">Amigo de Pata</span>
             </div>
-            <p className="text-white-50">
+            <p className="text-muted-foreground text-sm mb-4">
               Conectando corações e transformando vidas através da adoção responsável de cães.
             </p>
-            <div className="d-flex gap-3">
-              <a href="https://facebook.com" className="text-white fs-4">
-                <i className="bi bi-facebook"></i>
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com" className="text-white fs-4">
-                <i className="bi bi-instagram"></i>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Instagram className="w-5 h-5" />
               </a>
-              <a href="mailto:contato@amigodepata.com" className="text-white fs-4">
-                <i className="bi bi-envelope"></i>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="w-5 h-5" />
               </a>
             </div>
-          </Col>
+          </div>
 
-          <Col md={4} className="mb-4">
-            <h5 className="fw-bold mb-3">Links Rápidos</h5>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <Link to="/caes">Adotar um Cão</Link>
+          {/* Links Rápidos */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Links Rápidos</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/caes" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Adotar um Cão
+                </Link>
               </li>
-              <li className="mb-2">
-                <Link to="/apadrinhar">Apadrinhar</Link>
+              <li>
+                <Link to="/apadrinhar" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Apadrinhar
+                </Link>
               </li>
-              <li className="mb-2">
-                <Link to="/eventos">Eventos</Link>
+              <li>
+                <Link to="/eventos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Eventos
+                </Link>
               </li>
-              <li className="mb-2">
-                <Link to="/dicas">Dicas para Pets</Link>
+              <li>
+                <Link to="/dicas" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Dicas Pet
+                </Link>
               </li>
             </ul>
-          </Col>
+          </div>
 
-          <Col md={4} className="mb-4">
-            <h5 className="fw-bold mb-3">Ajuda</h5>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <a href="#denuncia">Denunciar Maus-Tratos</a>
+          {/* Contato */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Ajuda</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/denuncias" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Denunciar Maus Tratos
+                </Link>
               </li>
-              <li className="mb-2">
-                <Link to="/historias">Histórias de Adoção</Link>
+              <li>
+                <Link to="/historias" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Histórias de Adoção
+                </Link>
               </li>
-              <li className="mb-2">
-                <a href="#contato">Contato</a>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Contato
+                </a>
               </li>
             </ul>
-          </Col>
-        </Row>
+          </div>
+        </div>
 
-        <hr className="bg-white my-4" />
-
-        <Row>
-          <Col className="text-center">
-            <p className="mb-0 text-white-50">
-              &copy; {new Date().getFullYear()} Lar dos Caramellos. Todos os direitos reservados.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+        <div className="border-t border-border mt-8 pt-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Amigo de Pata. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
     </footer>
   );
 };
