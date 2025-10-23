@@ -1,9 +1,8 @@
-import { Calendar, MapPin, Clock, Users } from "lucide-react";
+import { Calendar, MapPin, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 const adoptionEvents = [
   {
@@ -89,13 +88,6 @@ const Events = () => {
                       />
                     </div>
                     <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="default">Confirmado</Badge>
-                        <div className="flex items-center text-sm text-muted-foreground">
-                          <Users className="w-4 h-4 mr-1" />
-                          <span>{event.attendees} interessados</span>
-                        </div>
-                      </div>
                       <CardTitle className="text-xl">{event.title}</CardTitle>
                       <CardDescription>{event.description}</CardDescription>
                     </CardHeader>
@@ -137,13 +129,6 @@ const Events = () => {
                       />
                     </div>
                     <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="secondary">Realizado</Badge>
-                        <div className="flex items-center text-sm text-muted-foreground">
-                          <Users className="w-4 h-4 mr-1" />
-                          <span>{event.attendees} participantes</span>
-                        </div>
-                      </div>
                       <CardTitle className="text-xl">{event.title}</CardTitle>
                       <CardDescription>{event.description}</CardDescription>
                     </CardHeader>
