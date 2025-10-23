@@ -113,9 +113,6 @@ const Events = () => {
                         <span>{event.location}</span>
                       </div>
                     </CardContent>
-                    <CardFooter>
-                      <Button className="w-full">Confirmar Presença</Button>
-                    </CardFooter>
                   </Card>
                 ))}
             </div>
