@@ -110,43 +110,6 @@ const Events = () => {
             </div>
           </div>
         </section>
-
-        {/* Past Events */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Eventos Anteriores</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {adoptionEvents
-                .filter(event => event.status === "past")
-                .map((event) => (
-                  <Card key={event.id} className="overflow-hidden opacity-80">
-                    <div className="aspect-video overflow-hidden">
-                      <img 
-                        src={event.image} 
-                        alt={event.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <CardHeader>
-                      <CardTitle className="text-xl">{event.title}</CardTitle>
-                      <CardDescription>{event.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="flex items-center text-sm">
-                        <Calendar className="w-4 h-4 mr-2 text-muted-foreground" />
-                        <span>{event.date}</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <MapPin className="w-4 h-4 mr-2 text-muted-foreground" />
-                        <span>{event.location}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
