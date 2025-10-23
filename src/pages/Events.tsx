@@ -147,20 +147,6 @@ const Events = () => {
             </div>
           </div>
         </section>
-
-        {/* Call to Action */}
-        <section className="py-16 bg-primary text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6">Quer Organizar um Evento?</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
-              Se você representa uma instituição ou gostaria de organizar um evento de adoção 
-              em sua comunidade, entre em contato conosco!
-            </p>
-            <Button size="lg" variant="secondary">
-              Entre em Contato
-            </Button>
-          </div>
-        </section>
       </main>
 
       <Footer />
