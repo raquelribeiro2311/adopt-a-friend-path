@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DogCard from "@/components/DogCard";
+import DogRegistrationModal from "@/components/DogRegistrationModal";
+import AuthModal from "@/components/AuthModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Filter } from "lucide-react";
+import { Search, Filter, Plus } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 import dog1 from "@/assets/dog-1.jpg";
 import dog2 from "@/assets/dog-2.jpg";
 import dog3 from "@/assets/dog-3.jpg";
 
 const Dogs = () => {
+  const { isAuthenticated } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [sizeFilter, setSizeFilter] = useState("all");
   const [ageFilter, setAgeFilter] = useState("all");
+  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [allDogs, setAllDogs] = useState<any[]>([]);
 
-  // Dados mockados - virão do backend futuramente (RF4)
-  const dogs = [
+  // Dados mockados iniciais
+  const mockDogs = [
     {
       id: "1",
       name: "Mel",
@@ -73,19 +80,49 @@ const Dogs = () => {
     },
   ];
 
+  useEffect(() => {
+    loadDogs();
+  }, []);
+
+  const loadDogs = () => {
+    const storedDogs = JSON.parse(localStorage.getItem("dogs") || "[]");
+    setAllDogs([...mockDogs, ...storedDogs]);
+  };
+
+  const handleAddDogClick = () => {
+    if (isAuthenticated) {
+      setIsRegistrationModalOpen(true);
+    } else {
+      setIsAuthModalOpen(true);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
       {/* Header */}
       <section className="bg-gradient-to-br from-primary to-primary/80 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-            Encontre seu novo melhor amigo
-          </h1>
-          <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Explore os perfis dos cães disponíveis para adoção. Use os filtros para encontrar o pet ideal para seu estilo de vida.
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+              Encontre seu novo melhor amigo
+            </h1>
+            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+              Explore os perfis dos cães disponíveis para adoção. Use os filtros para encontrar o pet ideal para seu estilo de vida.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <Button
+              onClick={handleAddDogClick}
+              size="lg"
+              variant="secondary"
+              className="gap-2"
+            >
+              <Plus className="w-5 h-5" />
+              Cadastrar Cão para Adoção
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -143,16 +180,16 @@ const Dogs = () => {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-foreground mb-2">
-              {dogs.length} cães encontrados
+              {allDogs.length} cães encontrados
             </h2>
             <p className="text-muted-foreground">
-              Clique nos corações para favoritar seus preferidos (RF5)
+              Clique nos corações para favoritar seus preferidos
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {dogs.map((dog) => (
-              <DogCard key={dog.id} {...dog} />
+            {allDogs.map((dog) => (
+              <DogCard key={dog.id} id={dog.id} name={dog.name} image={dog.image} age={dog.age} size={dog.size} location={dog.location} status={dog.status} />
             ))}
           </div>
 
@@ -163,6 +200,17 @@ const Dogs = () => {
           </div>
         </div>
       </section>
+
+      <DogRegistrationModal
+        open={isRegistrationModalOpen}
+        onOpenChange={setIsRegistrationModalOpen}
+        onDogAdded={loadDogs}
+      />
+
+      <AuthModal
+        open={isAuthModalOpen}
+        onOpenChange={setIsAuthModalOpen}
+      />
 
       <Footer />
     </div>
