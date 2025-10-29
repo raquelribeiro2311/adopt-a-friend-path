@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DogCard from "@/components/DogCard";
 import DogRegistrationModal from "@/components/DogRegistrationModal";
-import AuthModal from "@/components/AuthModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Filter, Plus } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 import dog1 from "@/assets/dog-1.jpg";
 import dog2 from "@/assets/dog-2.jpg";
 import dog3 from "@/assets/dog-3.jpg";
 
 const Dogs = () => {
   const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
   const [sizeFilter, setSizeFilter] = useState("all");
   const [ageFilter, setAgeFilter] = useState("all");
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [allDogs, setAllDogs] = useState<any[]>([]);
 
   // Dados mockados iniciais
@@ -93,7 +95,12 @@ const Dogs = () => {
     if (isAuthenticated) {
       setIsRegistrationModalOpen(true);
     } else {
-      setIsAuthModalOpen(true);
+      toast({
+        title: "Login necessário",
+        description: "Você precisa estar logado para cadastrar um cão.",
+        variant: "destructive",
+      });
+      navigate("/login");
     }
   };
 
@@ -205,11 +212,6 @@ const Dogs = () => {
         open={isRegistrationModalOpen}
         onOpenChange={setIsRegistrationModalOpen}
         onDogAdded={loadDogs}
-      />
-
-      <AuthModal
-        open={isAuthModalOpen}
-        onOpenChange={setIsAuthModalOpen}
       />
 
       <Footer />
